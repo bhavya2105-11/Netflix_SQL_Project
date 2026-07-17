@@ -23,23 +23,22 @@ COUNT(*) as total_number
 FROM Netflix
 GROUP BY type;
 
---Q2Show all distinct rating
+--Q2 Show all distinct rating
 SELECT Distinct rating,title 
 From Netflix
 ORDER BY rating desc;
 
---Find all Movies released after 2020.
+--Q3 Find all Movies released after 2020.
 SELECT *
 FROM netflix
 WHERE type='Movie'
 AND release_year>2020;
 
-
---Find all TV Shows.
+--Q4 Find all TV Shows.
 SELECT * FROM Netflix
 WHERE type='TV Show';
 
---List the first 10 titles alphabetically.
+--Q5List the first 10 titles alphabetically.
 SELECT title
 FROM netflix
 ORDER BY title
@@ -47,11 +46,11 @@ LIMIT 10;
 
 SELECT * FROM Netflix;
 
---Find content with rating TV-MA.
+--Q6 Find content with rating TV-MA.
 SELECT * FROM Netflix;
 WHERE rating ='TV-MA';
 
---Count the number of titles for each rating.
+--Q7 Count the number of titles for each rating.
 SELECT
     rating,
     COUNT(*) AS total_titles
@@ -59,19 +58,18 @@ FROM netflix
 GROUP BY rating
 ORDER BY total_titles DESC;
 
-
---Find the oldest movie.
+--Q8 Find the oldest movie.
 SELECT type,title,release_year 
 From Netflix
 ORDER BY release_year
 LIMIT 1;
 
---Find the newest release year
+--Q9 Find the newest release year
 SELECT MAX(release_year) AS latest_year
 FROM netflix;
 
 
---Find rows with NULL values.
+--Q10 Find rows with NULL values.
 SELECT
     COUNT(*) FILTER (WHERE show_id IS NULL) AS show_id_nulls,
     COUNT(*) FILTER (WHERE type IS NULL) AS type_nulls,
@@ -87,8 +85,7 @@ SELECT
     COUNT(*) FILTER (WHERE description IS NULL) AS description_nulls
 FROM netflix;
 
-
---Replace NULL countries with 'Unknown'.
+--Q11 Replace NULL countries with 'Unknown'.
 UPDATE netflix
 SET country = 'Unknown'
 WHERE country IS NULL;
@@ -99,7 +96,7 @@ FROM netflix
 WHERE country = 'Unknown';
 
 
---Find duplicate titles.
+--Q12 Find duplicate titles.
 SELECT
     title,
     COUNT(*) AS duplicate_count
@@ -108,41 +105,38 @@ GROUP BY title
 HAVING COUNT(*) > 1
 ORDER BY duplicate_count DESC, title;
 
---Count how many titles have missing directors.
+--Q13 Count how many titles have missing directors.
 SELECT COUNT(*) AS missing_directors
 FROM Netflix
 WHERE director is NUll;
 
---Find content with missing cast information.
+--Q14 Find content with missing cast information.
 SELECT title,casts
 FROM Netflix
 WHERE casts is NUll;
 
 
---Find all titles containing "Love".
+--Q15 Find all titles containing "Love".
 SELECT title 
 FROM Netflix
 WHERE title LIKE '%Love%';
 
---Find titles starting with "The".
+--Q16 Find titles starting with "The".
 SELECT title 
 FROM Netflix
 WHERE title LIKE 'The%';
 
-
---Find titles ending with "Man".
+--Q17 Find titles ending with "Man".
 SELECT title 
 FROM Netflix
 WHERE title LIKE '%Man';
 
-
---Find all titles where the description contains "murder".
+--Q18 Find all titles where the description contains "murder".
 SELECT title , description 
 FROM Netflix
 WHERE Description LIKE '%murder%';
 
-
---Which year had the most releases?
+--Q19 Which year had the most releases?
 SELECT
     release_year,
     COUNT(*) AS total_titles
@@ -151,8 +145,7 @@ GROUP BY release_year
 ORDER BY total_titles DESC
 LIMIT 1;
 
-
---Which country produces the most Netflix content?
+--Q20 Which country produces the most Netflix content?
 SELECT
     country,
     COUNT(*) AS total_titles
@@ -162,8 +155,7 @@ GROUP BY country
 ORDER BY total_titles DESC
 LIMIT 1;
 
-
---Which genre is the most common?
+--Q21 Which genre is the most common?
 SELECT
     listed_in,
     COUNT(*) AS total_titles
@@ -172,8 +164,7 @@ GROUP BY listed_in
 ORDER BY total_titles DESC
 LIMIT 1;
 
-
---Which director has directed the most Movies?
+--Q22 Which director has directed the most Movies?
 SELECT
     director,
     COUNT(*) AS total_movies
@@ -184,8 +175,7 @@ GROUP BY director
 ORDER BY total_movies DESC
 LIMIT 1;
 
-
---Which actor appears in the highest number of titles?
+--Q23 Which actor appears in the highest number of titles?
 SELECT
     TRIM(actor) AS actor,
     COUNT(*) AS total_titles
@@ -196,8 +186,7 @@ GROUP BY actor
 ORDER BY total_titles DESC
 LIMIT 1;
 
-
---Which decade has the most releases?
+--Q24 Which decade has the most releases?
 SELECT
     (release_year / 10) * 10 AS decade,
     COUNT(*) AS total_titles
@@ -206,8 +195,7 @@ GROUP BY decade
 ORDER BY total_titles DESC
 LIMIT 1;
 
-
---Top 10 longest movies
+--Q25 Top 10 longest movies
 SELECT
     title,
     duration,
@@ -218,7 +206,7 @@ ORDER BY CAST(REPLACE(duration, ' min', '') AS INTEGER) DESC
 LIMIT 10;
 
 
---Which Movies were added to Netflix more than 5 years after their release?
+--Q26 Which Movies were added to Netflix more than 5 years after their release?
 SELECT
     title,
     release_year,
@@ -230,7 +218,7 @@ AND date_added IS NOT NULL
 AND (EXTRACT(YEAR FROM TO_DATE(date_added,'Month DD, YYYY')) - release_year) > 5;
 
 
---Find actors who worked with the most different directors
+--Q27 Find actors who worked with the most different directors
 SELECT
     TRIM(actor) AS actor,
     COUNT(DISTINCT director) AS total_directors
@@ -243,7 +231,7 @@ ORDER BY total_directors DESC
 LIMIT 10;
 
 
---Find directors who have both Movies and TV Shows.
+--Q28 Find directors who have both Movies and TV Shows.
 SELECT
     director
 FROM netflix
