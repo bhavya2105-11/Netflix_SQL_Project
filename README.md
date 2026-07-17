@@ -10,4 +10,4 @@ The project demonstrates fundamental SQL skills through practical queries on a r
 # Dataset
 The data for this project is sourced from the Kaggle dataset:
 
-Dataset Link: https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=download
+- **Dataset:** [Netflix Movies and TV Shows Dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows)
