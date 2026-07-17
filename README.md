@@ -12,5 +12,9 @@ The data for this project is sourced from the Kaggle dataset:
 
 - **Dataset:** [Netflix Movies and TV Shows Dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows)
 
-## Problems
+# 📄 SQL Script
+
+View the complete SQL script here:
+
+**[Netflix_SQL_Analysis.sql](Netflix_SQL_Analysis.sql)**
 
