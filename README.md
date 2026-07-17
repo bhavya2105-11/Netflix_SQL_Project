@@ -15,5 +15,5 @@ The data for this project is sourced from the Kaggle dataset:
 # 📄 SQL Script
 
 View the complete SQL script here:
-[Netflix Data Analysis](https://github.com/bhavya2105-11/Netflix_SQL_Project/commit/8735853046850cb85825c0122f3906a739a2de25)
+[Netflix Data Analysis](https://github.com/bhavya2105-11/Netflix_SQL_Project/blob/main/First%20SQL%20project.sql)
 
